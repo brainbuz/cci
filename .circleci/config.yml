@@ -15,9 +15,11 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
       - image: perldocker/perl-tester:5.22
     steps:
       - checkout
-      - run: perl -V
+      # - run: perl -V
       # - run: cd Hello; prove -l t/*.t
-
+      - run:
+          command: perl -V
+          working_directory: Hello
 
   # - run:
   #     command: echo integ test
