@@ -7,6 +7,7 @@ package Hello;
 use 5.022;
 use feature qw/postderef signatures/;
 no warnings 'experimental';
+use Sort::Hash;
 
 sub Hello ( $msg ) {
 	say "Hello $msg";
