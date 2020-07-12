@@ -17,9 +17,10 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
       - checkout
       - run:
           command: perl -V
+          working_directory: Hello
+      - run:
           command: dzil listdeps
           working_directory: Hello
-
       - run:
           command: prove -l t/*.t
           working_directory: Hello
