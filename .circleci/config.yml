@@ -16,8 +16,9 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
     steps:
       - checkout
       - run: perl -V
-      - run: cd Hello
-      - run: prove -l t/*.t
+      - run:
+        command: prove -l t/*.t
+        working_directory: Hello
 
     #     build:
     # description: |
