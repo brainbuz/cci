@@ -16,10 +16,12 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
     steps:
       - checkout
       - run: perl -V
-      - run:
-        command: prove -l t/*.t
-        working_directory: Hello
+      # - run: cd Hello; prove -l t/*.t
 
+
+  # - run:
+  #     command: echo integ test
+  #     working_directory: integ_tests
     #     build:
     # description: |
     #   Builds and test the Perl distribution.
