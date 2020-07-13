@@ -9,6 +9,15 @@ workflows:
           codecov: false
           save-to-artifacts: false
           save-to-workspace: false
+          steps:
+          - run:
+              command: perl -V
+              working_directory: Hello
+          - run:
+              description: Install Hello dependencies
+              command: dzil listdeps | xargs cpanm
+              working_directory: Hello
+
       - perl/test-linux:
           matrix:
             parameters:
