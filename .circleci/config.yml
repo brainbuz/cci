@@ -25,7 +25,7 @@ jobs:
   buildtest:
     docker:
       # - image: perldocker/perl-tester:<< parameters.perl-version >>
-      - image: perldocker/perl-tester:5.22
+      - image: perldocker/perl-tester:5.28
     parameters:
       perl-version:
         default: "5.32"
