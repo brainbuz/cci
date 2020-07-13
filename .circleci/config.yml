@@ -39,7 +39,7 @@ jobs:
           # working_directory: Hello
       - run:
           # description: Install Hello dependencies
-          command: dzil listdeps | xargs cpanm
+          command: pwd; dzil listdeps | xargs cpanm;
           # working_directory: Hello
       - run:
           description: Test Hello
