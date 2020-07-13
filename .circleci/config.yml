@@ -35,7 +35,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: perl -V
+          command: perl -V; pwd;
           working_directory: Hello
       - run:
           # description: Install Hello dependencies
