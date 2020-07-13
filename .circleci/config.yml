@@ -9,6 +9,7 @@ workflows:
           codecov: false
           save-to-artifacts: false
           save-to-workspace: false
+      - perl/setup:
           steps:
           - run:
               command: perl -V
