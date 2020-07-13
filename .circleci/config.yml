@@ -3,14 +3,14 @@ orbs:
   perl: circleci/perl@1.0.0
 
 jobs: # we now have TWO jobs, so that a workflow can coordinate them!
-  # one: # This is our first job.
-  #   docker: # it uses the docker executor
-  #     - image: circleci/ruby:2.4.1 # specifically, a docker image with ruby 2.4.1
-  #   # Steps are a list of commands to run inside the docker container above.
-  #   steps:
-  #     - checkout # this pulls pulls code down from GitHub
-  #     - run: echo "A first hello" # This prints "A first hello" to stdout.
-  buildandtest:
+  one: # This is our first job.
+    docker: # it uses the docker executor
+      - image: circleci/ruby:2.4.1 # specifically, a docker image with ruby 2.4.1
+    # Steps are a list of commands to run inside the docker container above.
+    steps:
+      - checkout # this pulls pulls code down from GitHub
+      - run: echo "A first hello" # This prints "A first hello" to stdout.
+  two:
     docker:
       - image: perldocker/perl-tester:5.22
     steps:
@@ -49,5 +49,5 @@ jobs: # we now have TWO jobs, so that a workflow can coordinate them!
 workflows:
   one_and_two: # this is the name of our workflow
     jobs: # and here we list the jobs we are going to run.
-      # - one
-      - buildandtest
+      - one
+      - two
