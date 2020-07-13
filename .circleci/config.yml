@@ -25,9 +25,9 @@ jobs:
   buildtest:
     docker:
       - image: perldocker/perl-tester:<< parameters.perl-version >>
-    parameters:
-      perl-version:
-        default: "5.32"
+    # parameters:
+    #   perl-version:
+    #     default: "5.32"
     working_directory: Hello
     steps:
       - checkout
