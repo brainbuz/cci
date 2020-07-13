@@ -22,7 +22,7 @@ orbs:
 #           requires:
 #             - perl/build
 jobs:
-  perl/build:
+  buildtest:
     docker:
       - image: perldocker/perl-tester:5.22
     steps:
@@ -34,10 +34,6 @@ jobs:
           # description: Install Hello dependencies
           command: dzil listdeps | xargs cpanm
           working_directory: Hello
-  test:
-    requires:
-      - perl/build
-    steps:
       - run:
           description: Test Hello
           command: prove -l t/*.t
@@ -46,4 +42,4 @@ workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
       # - perl/build
-      - test
+      - buildtest
