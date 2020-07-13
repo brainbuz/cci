@@ -37,6 +37,7 @@ jobs:
   test:
     requires:
       - perl/build
+    steps:
       - run:
           description: Test Hello
           command: prove -l t/*.t
