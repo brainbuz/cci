@@ -31,12 +31,16 @@ jobs:
         default: "5.32"
         description: The Perl version we want to do the build and test with
         type: string
-    working_directory: Hello
+    # working_directory: Hello
+    # when given at job level goes to /tmp/Hello
+    # when given at the step level goes to /root/project/Hello
+    working_directory: /root/project/Hello
+
     steps:
       - checkout
       - run:
           command: perl -V; pwd;
-          # working_directory: Hello
+          # working_directory: Hello goes to
       - run:
           # description: Install Hello dependencies
           command: pwd; dzil listdeps | xargs cpanm;
