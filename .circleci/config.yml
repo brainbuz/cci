@@ -31,9 +31,8 @@ jobs:
           command: perl -V
           working_directory: Hello
       - run:
-          description: Install Hello dependencies
+          # description: Install Hello dependencies
           command: dzil listdeps | xargs cpanm
-          working_directory: Hello
           working_directory: Hello
   test:
     requires:
