@@ -1,7 +1,13 @@
 version: 2.1
+
 orbs:
   perl: circleci/perl@1.0.0
 
+parameters:
+  perl-version:
+    default: "5.32"
+    description: The Perl version we want to do the build and test with
+    type: string
 # workflows:
 #   main:
 #     jobs:
@@ -26,11 +32,7 @@ jobs:
     docker:
       # - image: perldocker/perl-tester:<< parameters.perl-version >>
       - image: perldocker/perl-tester:<< parameters.perl-version >>
-    parameters:
-      perl-version:
-        default: "5.32"
-        description: The Perl version we want to do the build and test with
-        type: string
+
     # working_directory: Hello
     # when given at job level goes to /tmp/Hello
     # when given at the step level goes to /root/project/Hello
