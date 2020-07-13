@@ -24,10 +24,11 @@ orbs:
 jobs:
   buildtest:
     docker:
-      - image: perldocker/perl-tester:<< parameters.perl-version >>
-    parameters:
-      perl-version:
-        default: "5.32"
+      # - image: perldocker/perl-tester:<< parameters.perl-version >>
+      - image: perldocker/perl-tester:5.22
+    # parameters:
+    #   perl-version:
+    #     default: "5.32"
     working_directory: Hello
     steps:
       - checkout
@@ -37,7 +38,7 @@ jobs:
       - run:
           # description: Install Hello dependencies
           command: dzil listdeps | xargs cpanm
-          working_directory: Hello
+          # working_directory: Hello
       - run:
           description: Test Hello
           command: prove -l t/*.t
@@ -46,7 +47,6 @@ jobs:
 workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
-      # - perl/build
       - buildtest
       # - buildtest:
         # matrix:
