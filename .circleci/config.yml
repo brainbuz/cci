@@ -28,6 +28,7 @@ jobs:
     parameters:
       perl-version:
         default: "5.32"
+    working_directory: Hello
     steps:
       - checkout
       - run:
@@ -46,9 +47,10 @@ workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
       # - perl/build
-      - buildtest:
-        matrix:
-          parameters:
-            perl-version:
-              - '5.22'
-              - '5.32'
+      - buildtest
+      # - buildtest:
+        # matrix:
+        #   parameters:
+        #     perl-version:
+        #       - '5.22'
+        #       - '5.32'
