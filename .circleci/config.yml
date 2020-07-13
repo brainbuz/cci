@@ -2,25 +2,43 @@ version: 2.1
 orbs:
   perl: circleci/perl@1.0.0
 
-jobs:
-  buildandtest:
-    docker:
-      - image: perldocker/perl-tester:5.22
-    steps:
-      - checkout
-      - run:
-          command: perl -V
-          working_directory: Hello
-      - run:
-          description: Install Hello dependencies
-          command: dzil listdeps | xargs cpanm
-          working_directory: Hello
-      - run:
-          description: Test Hello
-          command: prove -l t/*.t
-          working_directory: Hello
-
 workflows:
-  Hello_Perl_App: # this is the name of our workflow
+  main:
     jobs:
-      - buildandtest
+      - perl/build:
+          codecov: false
+          save-to-artifacts: false
+          save-to-workspace: false
+      - perl/test-linux:
+          matrix:
+            parameters:
+              perl-version:
+                - '5.22'
+                - '5.24'
+                - '5.26'
+                - '5.28'
+                - '5.30'
+          requires:
+            - perl/build
+# jobs:
+#   buildandtest:
+#     docker:
+#       - image: perldocker/perl-tester:5.22
+#     steps:
+#       - checkout
+#       - run:
+#           command: perl -V
+#           working_directory: Hello
+#       - run:
+#           description: Install Hello dependencies
+#           command: dzil listdeps | xargs cpanm
+#           working_directory: Hello
+#       - run:
+#           description: Test Hello
+#           command: prove -l t/*.t
+#           working_directory: Hello
+
+# workflows:
+#   Hello_Perl_App: # this is the name of our workflow
+#     jobs:
+#       - buildandtest
