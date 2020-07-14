@@ -37,8 +37,8 @@ workflows:
     jobs:
       - buildtest:
         parameters:
-          perlv: '5.22'
-        # matrix:
-          # parameters:
-          #   perlv: '5.22'
+          # perlv: '5.22'
+          matrix:
+            parameters:
+              perlv: '5.22'
               # - '5.32'
