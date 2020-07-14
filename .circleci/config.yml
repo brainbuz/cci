@@ -8,8 +8,8 @@ jobs:
     parameters:
       perlv:
         # default: "5.32"
-      description: The Perl version we want to do the build and test with
-      type: string
+        description: The Perl version we want to do the build and test with
+        type: string
 
     docker:
       # - image: perldocker/perl-tester:<< parameters.perlv >>
