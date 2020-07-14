@@ -17,7 +17,7 @@ jobs:
     parameters:
       perlv:
         description: "The Perl version we want to do the build and test with"
-        default: "5.32"
+        # default: "5.32"
         type: string
     docker:
       # - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
