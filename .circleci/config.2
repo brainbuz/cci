@@ -12,7 +12,7 @@ jobs:
 
     docker:
       # - image: perldocker/perl-tester:<< parameters.perl-version >>
-      - image: perldocker/perl-tester:<< parameters.perl-version >>
+      - image: perldocker/perl-tester:<< parameters.perlv >>
 
     # working_directory: Hello
     # when given at job level goes to /tmp/Hello
@@ -36,7 +36,8 @@ workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
       - buildtest:
-        perl-version: '5.22'
+        parameters:
+          perlv: '5.22'
         # matrix:
           # parameters:
           #   perl-version: '5.22'
