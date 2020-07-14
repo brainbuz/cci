@@ -47,14 +47,14 @@ workflows:
  version: 2
  Example_Workflow:
   jobs:
-    - build:
-      parameters:
-        perl-version: 5.26
+    - build
+      # parameters:
+      #   perl-version: 5.26
     - test:
       requires:
         - build
-      parameters:
-        perl-version: 5.26
+      # parameters:
+      #   perl-version: 5.26
     #  - Run-With-Node:
     #      requires:
     #        - Hello-World
