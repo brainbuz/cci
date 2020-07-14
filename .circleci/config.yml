@@ -1,9 +1,9 @@
 ---
 version: 2.1
-# commit 118
+# commit 119
 jobs:
   sayhello: # defines a parameterized job
-    description: A job that does very little other than demonstrate what a parameterized job looks like
+    description: Demonstrate what a parameterized job looks like
     parameters:
       saywhat:
         description: "To whom shall we say hello?"
@@ -16,8 +16,8 @@ jobs:
   buildtest:
     parameters:
       perlv:
+        description: "The Perl version we want to do the build and test with"
         # default: "5.32"
-        description: The Perl version we want to do the build and test with
         type: string
     docker:
       # - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
