@@ -1,6 +1,6 @@
 ---
 version: 2.1
-# commit 114
+# commit 115
 
 # parameters:
 #   perlv:
@@ -21,7 +21,7 @@ jobs:
 
     docker:
       # - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
-      - image: perldocker/perl-tester:<< parameters.perlv >>
+      - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
 
     # working_directory: Hello
     # when given at job level goes to /tmp/Hello
