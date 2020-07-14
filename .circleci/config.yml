@@ -9,7 +9,7 @@ parameters:
 jobs:
   build:
     docker:
-      - image: perldocker/perl-tester:5.22
+      - image: perldocker/perl-tester:<< parameters.perl-version >>
     steps:
       - checkout
       - run:
@@ -19,7 +19,7 @@ jobs:
             echo 'This is the delivery pipeline'
   test:
     docker:
-      - image: perldocker/perl-tester:5.22
+      - image: perldocker/perl-tester:<< parameters.perl-version >>
     steps:
       - run:
           name: Code Has Arrived
@@ -46,11 +46,15 @@ jobs:
 workflows:
  version: 2
  Example_Workflow:
-   jobs:
-     - build
-     - test:
-         requires:
-           - build
+  jobs:
+    - build:
+      parameters:
+        perl-version: 5.26
+    - test:
+      requires:
+        - build
+      parameters:
+        perl-version: 5.26
     #  - Run-With-Node:
     #      requires:
     #        - Hello-World
