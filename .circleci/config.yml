@@ -1,6 +1,6 @@
 ---
 version: 2.1
-# commit 122
+# commit 123
 jobs:
   sayhello: # defines a parameterized job
     description: Demonstrate what a parameterized job looks like
@@ -42,8 +42,11 @@ workflows:
       - sayhello: # invokes the parameterized job
           saywhat: Everyone
       - buildtest:
-        parameters:
-          perlv: ["5.22", "5.28"]
+        matrix:
+          parameters:
+            perl-version:
+              - '5.22'
+              - '5.28'
 
       # - buildtest:
       #     perlv: "5.26"
