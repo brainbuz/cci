@@ -35,9 +35,9 @@ jobs:
 workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
-      - buildtest:
-        parameters:
-          perl-version: '5.22'
+      - buildtest
+        # parameters:
+        #   perl-version: '5.22'
         # matrix:
           # parameters:
           #   perl-version: '5.22'
