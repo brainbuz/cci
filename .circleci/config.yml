@@ -1,5 +1,6 @@
+---
 version: 2.1
-# commit 113
+# commit 114
 
 # parameters:
 #   perlv:
@@ -41,13 +42,15 @@ jobs:
           working_directory: Hello
 
 workflows:
-  Hello_Perl_App: # this is the name of our workflow
+  Hello_Perl_App:
     jobs:
       - buildtest:
-        perlv: "5.26"
-        # matrix:
-        #   parameters:
-        #     perlv: ["5.22", "5.28"]
+        parameters:
+          perlv: "5.26"
+
+# matrix:
+#   parameters:
+#     perlv: ["5.22", "5.28"]
 
 # workflows:
 #   workflow:
