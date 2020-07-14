@@ -11,11 +11,11 @@ jobs:
 
   buildtest:
 
-    # parameters:
-    #   perlv:
-    #     # default: "5.32"
-    #     description: The Perl version we want to do the build and test with
-    #     type: string
+    parameters:
+      perlv:
+        # default: "5.32"
+        description: The Perl version we want to do the build and test with
+        type: string
 
     docker:
       # - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
@@ -48,7 +48,7 @@ workflows:
         #   parameters:
         #     perlv: ["5.22", "5.28"]
 
-# 100
+# 101
 # workflows:
 #   workflow:
 #     jobs:
