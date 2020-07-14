@@ -1,4 +1,5 @@
 #!/bin/bash
 
+./bump.pl
 git commit -a -m 'no commit message'
 git push
