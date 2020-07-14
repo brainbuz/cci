@@ -23,12 +23,13 @@ orbs:
 #           requires:
 #             - perl/build
 jobs:
-  parameters:
-    perl-version:
-      default: "5.32"
-      description: The Perl version we want to do the build and test with
-      type: string
+
   buildtest:
+    parameters:
+      perl-version:
+        default: "5.32"
+        description: The Perl version we want to do the build and test with
+        type: string
     docker:
       # - image: perldocker/perl-tester:<< parameters.perl-version >>
       - image: perldocker/perl-tester:<< parameters.perl-version >>
