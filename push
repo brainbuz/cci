@@ -1,5 +1,6 @@
 #!/bin/bash
 
-./bump.pl
-git commit -a -m 'no commit message'
+DATE=`date`
+BUMP=`./bump.pl`
+git commit -a -m "$BUMP -- $DATE"
 git push
