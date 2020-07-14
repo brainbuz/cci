@@ -1,47 +1,32 @@
 version: 2.1
 
-orbs:
-  perl: circleci/perl@1.0.0
+parameters:
+  perl-version:
+    default: "5.32"
+    description: The Perl version we want to do the build and test with
+    type: string
 
-# workflows:
-#   main:
-#     jobs:
-#       - perl/build:
-#           codecov: false
-#           save-to-artifacts: false
-#           save-to-workspace: false
-
-#       - perl/test-linux:
-#           matrix:
-#             parameters:
-#               perl-version:
-#                 - '5.22'
-#                 - '5.24'
-#                 - '5.26'
-#                 - '5.28'
-#                 - '5.30'
-#           requires:
-#             - perl/build
 jobs:
+  parameters:
+    perl-version:
+      default: "5.32"
+      description: The Perl version we want to do the build and test with
+      type: string
 
   build:
-    parameters:
-      perl-version:
-        default: "5.32"
-        description: The Perl version we want to do the build and test with
-        type: string
     docker:
-      # - image: perldocker/perl-tester:<< parameters.perl-version >>
       - image: perldocker/perl-tester:<< parameters.perl-version >>
 
-    # working_directory: Hello
-    # when given at job level goes to /tmp/Hello
-    # when given at the step level goes to /root/project/Hello
+# working_directory: Hello
+# when given at job level goes to /tmp/Hello
+# when given at the step level goes to /root/project/Hello
 
     steps:
       - checkout
 
   test:
+    docker:
+      - image: perldocker/perl-tester:<< parameters.perl-version >>
     steps:
       - run:
           command: perl -V; pwd;
