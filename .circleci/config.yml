@@ -1,16 +1,17 @@
 version: 2.1
 
-parameters:
-  perl-version:
-    default: "5.32"
-    description: The Perl version we want to do the build and test with
-    type: string
+# parameters:
+#   perl-version:
+#     default: "5.32"
+#     description: The Perl version we want to do the build and test with
+#     type: string
 
 jobs:
 
   build:
     docker:
-      - image: perldocker/perl-tester:<< parameters.perl-version >>
+      - image: perldocker/perl-tester:5.26
+      #<< parameters.perl-version >>
 
 # working_directory: Hello
 # when given at job level goes to /tmp/Hello
@@ -21,7 +22,7 @@ jobs:
 
   test:
     docker:
-      - image: perldocker/perl-tester:<< parameters.perl-version >>
+      - image: perldocker/perl-tester:5.26
     steps:
       - run:
           command: perl -V; pwd;
@@ -41,8 +42,8 @@ workflows:
       - build
       - test:
         requires: build
-        matrix:
-          parameters:
-            perl-version:
-              - '5.22'
-              - '5.32'
+        # matrix:
+        #   parameters:
+        #     perl-version:
+        #       - '5.22'
+        #       - '5.32'
