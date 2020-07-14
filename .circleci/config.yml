@@ -24,7 +24,7 @@ orbs:
 #             - perl/build
 jobs:
 
-  buildtest:
+  build:
     parameters:
       perl-version:
         default: "5.32"
@@ -40,6 +40,9 @@ jobs:
 
     steps:
       - checkout
+
+  test:
+    steps:
       - run:
           command: perl -V; pwd;
           # working_directory: Hello
@@ -55,8 +58,9 @@ jobs:
 workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
-      # - buildtest
-      - buildtest:
+      - build
+      - test:
+        requires: build
         matrix:
           parameters:
             perl-version:
