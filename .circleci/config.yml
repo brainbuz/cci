@@ -1,5 +1,5 @@
 version: 2.1
-# commit 111
+# commit 112
 
 # parameters:
 #   perlv:
@@ -14,7 +14,7 @@ jobs:
 
     parameters:
       perlv:
-        default: "5.32"
+        # default: "5.32"
         description: The Perl version we want to do the build and test with
         type: string
 
@@ -44,7 +44,7 @@ workflows:
   Hello_Perl_App: # this is the name of our workflow
     jobs:
       - buildtest
-        # perlv: "5.26"
+        perlv: "5.26"
         # matrix:
         #   parameters:
         #     perlv: ["5.22", "5.28"]
