@@ -1,0 +1,6 @@
+#!/bin/bash
+
+COMMIT=`date`
+echo "use data for commit message: $COMMIT"
+git commit -a -m "$COMMIT"
+git push
