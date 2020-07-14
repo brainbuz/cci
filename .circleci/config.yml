@@ -12,8 +12,8 @@ jobs:
         type: string
 
     docker:
-      # - image: perldocker/perl-tester:<< parameters.perlv >>
-      - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
+      # - image: perldocker/perl-tester:<< pipeline.parameters.perlv >>
+      - image: perldocker/perl-tester:<< parameters.perlv >>
 
     # working_directory: Hello
     # when given at job level goes to /tmp/Hello
